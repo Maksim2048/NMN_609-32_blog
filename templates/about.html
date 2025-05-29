@@ -1,0 +1,32 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block content %}
+    <h1>{{ header }}</h1>
+    <div class="about">
+        <div class="card_info">
+            <img src="{% static "img/director.jpg" %}" alt="">
+            <p>Director: {{director.name}}</p>
+        </div>
+        <div class="card_info">
+            <img src="{% static "img/office.jpg" %}" alt="">
+            <p>Address: {{address.0}}, {{address.1}}, {{address.2}}, {{address.3}}</p>
+        </div>
+        <div class="card_info">
+            <img src="{% static "img/Staff.jpg" %}" alt="">
+            <p>Staff: {{staff.0}}, {{staff.1}},{{staff.2}}</p>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Homepage</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}

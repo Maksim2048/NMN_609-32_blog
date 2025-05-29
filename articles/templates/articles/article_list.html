@@ -1,0 +1,26 @@
+{% extends "base_layout.html" %}
+{% block title %}Article List{% endblock title %}
+{% block content %}
+    <main>
+        <h1>Article List</h1>
+        <div class="articles">
+            {% for element in articles %}
+                <div class="article_item">
+                    <h2>
+                        <a href="{% url 'article_detail' slug=element.slug %}">
+                            {{ element.title }}
+                        </a>
+                    </h2>
+                    <div class="article_content">
+                        <p>
+                            {{ element.snippet }}
+                        </p>
+                        <time>
+                            {{ element.date }}
+                        </time>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}

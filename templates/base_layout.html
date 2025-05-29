@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Default title{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static "img/logo.png" %}" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'homepage' %}">Homepage</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'article_list' %}">Articles</a></li>
+                <li><a href="{% url 'signup' %}">Signup</a></li>
+                {% if user.is_authenticated %}
+                <li>
+                    <form class="form" action="/accounts/logout/" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+                {% else %}
+                    <li>
+                        <a id="login" href="{% url 'login' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>
