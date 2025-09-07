@@ -11,22 +11,22 @@
         <div class="logo">
             <img src="{% static "img/logo.png" %}" alt="">
         </div>
-        <nav>
+        <nav class="container">
             <ul>
                 <li><a href="{% url 'homepage' %}">Homepage</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'article_list' %}">Articles</a></li>
-                <li><a href="{% url 'signup' %}">Signup</a></li>
+                <li><a href="{% url 'articles:list' %}">Articles</a></li>
+                <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
                 {% if user.is_authenticated %}
                 <li>
-                    <form class="form" action="/accounts/logout/" method="post">
+                    <form class="form" action="{% url 'accounts:logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Logout</button>
                     </form>
                 </li>
                 {% else %}
                     <li>
-                        <a id="login" href="{% url 'login' %}">Login</a>
+                        <a id="login" href="{% url 'accounts:login' %}">Login</a>
                     </li>
                 {% endif %}
             </ul>

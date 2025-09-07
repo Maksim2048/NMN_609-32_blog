@@ -7,7 +7,7 @@
             {% for element in articles %}
                 <div class="article_item">
                     <h2>
-                        <a href="{% url 'article_detail' slug=element.slug %}">
+                        <a href="{% url 'articles:article_detail' slug=element.slug %}">
                             {{ element.title }}
                         </a>
                     </h2>
