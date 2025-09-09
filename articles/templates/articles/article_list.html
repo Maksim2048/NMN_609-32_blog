@@ -7,9 +7,7 @@
             {% for element in articles %}
                 <div class="article_item">
                     <h2>
-                        <a href="{% url 'articles:article_detail' slug=element.slug %}">
-                            {{ element.title }}
-                        </a>
+                        {{ element.title }}
                     </h2>
                     <div class="article_content">
                         <p>
@@ -18,9 +16,13 @@
                         <time>
                             {{ element.date }}
                         </time>
+                        <div class="read_more_btn"><a href="{% url 'articles:article_detail' slug=element.slug %}">Read more</a></div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+        {% if user.is_authenticated %}
+            <a class="create_articles" href="{% url 'articles:create' %}">Create article</a>
+        {% endif %}
     </main>
 {% endblock content %}

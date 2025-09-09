@@ -23,50 +23,84 @@ h1{
 a{
     text-decoration: none;
 }
-.articles{
-    display: flex;
-    /*justify-content: space-between;*/
-    align-items: center;
-    flex-wrap: wrap;
+/*.articles{*/
+/*    display: flex;*/
+/*    !*justify-content: space-between;*!*/
+/*    align-items: center;*/
+/*    flex-wrap: wrap;*/
+/*    margin-top: 50px;*/
+/*}*/
+.articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
     margin-top: 50px;
+    justify-content: center;
 }
+
 .article_item{
-    width: 200px;
-    height: 150px;
+    width: 210px;
+    height: 180px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     border-radius: 25px;
     padding: 25px 25px;
     margin: 20px auto;
-    text-align: center;
-    background-image: url('../img/card_article.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    justify-content: space-between;
+    /*background-image: url('../img/card_article.jpg');*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    border: solid 2px #1552c4;
 }
-.article_item a{
-    margin-bottom: 20px;
+
+.article_item h2{
+    margin-bottom: 25px;
+    font-weight: normal;
 }
+
 .article_content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    align-items: flex-start;
+    color: #737070;
 }
-
-.article_content p {
+.article_content p, time{
     margin: 5px 0;
-    color: black;
 }
 .article_content a{
-    color: purple;
+    display: flex;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #1552c4;
+    border: solid #0a73ea 2px;
+    border-radius: 8px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: flex-end;
+    width: 40%;
+    max-height: 20px;
 }
+
+.read_more_btn{
+    width: 200px;
+}
+
 .logo img{
     width: 50px;
     height: 50px;
+}
+
+.create_articles{
+    padding: 10px 20px;
+    background-color: #0a73ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 10px 20px;
+}
+
+.create_articles:hover{
+    background-color: #0079ff;
 }
 
 header{
@@ -162,6 +196,7 @@ nav button:hover{
     margin: 0 auto;
 }
 
+/*Главная страница */
 .homepage_fon
 {
     display: flex;
@@ -219,3 +254,4 @@ nav button:hover{
 .btn:hover{
     background: #004592;
 }
+

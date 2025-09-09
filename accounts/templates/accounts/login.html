@@ -3,15 +3,15 @@
 {% block title %} Login {% endblock title %}
 {% block content %}
 <div class="login">
-        <h1>Login</h1>
-        <form class="form" action="{% url 'accounts:login' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
-            {% if request.GET.next %}
-                <input type="hidden" name="next" value="{{ request.GET.next }}">
-            {% endif %}
-            <button type="submit" class="btn btn-primary">Sign up</button>
-        </form>
-    </div>
+    <h1>Login</h1>
+    <form class="form" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
 {% endblock content %}
 
