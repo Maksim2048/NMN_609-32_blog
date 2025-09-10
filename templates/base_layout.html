@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="{% url 'homepage' %}">Homepage</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'articles:list' %}">Articles</a></li>
+                <li><a href="{% url 'homepage' %}">Articles</a></li>
                 <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
                 {% if user.is_authenticated %}
                 <li>
