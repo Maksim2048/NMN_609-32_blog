@@ -3,11 +3,27 @@
 {% block title %} Signup {% endblock title %}
 {% block content %}
     <div class="login">
-        <h1>Signup</h1>
-        <form class="form" action="{% url 'accounts:signup' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="btn btn-primary">Sign up</button>
-        </form>
-    </div>
+    <h1>Signup</h1>
+
+    <form class="form" action="{% url 'accounts:signup' %}" method="post">
+        {% csrf_token %}
+
+        <div class="form-fields">
+            {% for field in form %}
+            <div class="form-field">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                <div class="help-text">{{ field.help_text }}</div>
+                {% endif %}
+                {% if field.errors %}
+                <div class="error-text">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+</div>
 {% endblock content %}
