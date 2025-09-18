@@ -26,7 +26,10 @@
                 </li>
                 {% else %}
                     <li>
-                        <a id="login" href="{% url 'accounts:login' %}">Login</a>
+                        <a class="btn btn-outline-primary" href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-primary" href="{% url 'accounts:signup' %}">Sign up</a>
                     </li>
                 {% endif %}
             </ul>
