@@ -242,18 +242,28 @@ nav button:hover{
     cursor: pointer;
 }
 
-.btn-primary{
-    background: #024aa0;
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background: #3498db;
     color: white;
-
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
-.btn-primary:hover{
-    background: #004592;
+
+.btn-primary:hover {
+    background: #2980b9;
     color: white;
+    transform: translateY(-1px);
 }
 
 .btn-secondary{
     background: #ef9162;
+    text-align: center;
 }
 
 .btn-secondary:hover{
@@ -367,24 +377,6 @@ nav button:hover{
     padding-left: 18px;
 }
 
-/* Кнопка */
-.btn-primary {
-    width: 100%;
-    padding: 15px;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: #2980b9;
-    transform: translateY(-1px);
-}
 
 /* Адаптивность */
 @media (max-width: 480px) {
