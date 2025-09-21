@@ -2,12 +2,9 @@
 {% load static %}
 {% block title %} Signup {% endblock title %}
 {% block content %}
-    <div class="login">
     <h1>Signup</h1>
-
     <form class="form" action="{% url 'accounts:signup' %}" method="post">
         {% csrf_token %}
-
         <div class="form-fields">
             {% for field in form %}
             <div class="form-field">
@@ -22,8 +19,6 @@
             </div>
             {% endfor %}
         </div>
-
         <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
-</div>
 {% endblock content %}
