@@ -22,7 +22,9 @@
             {% endfor %}
         </div>
         {% if user.is_authenticated %}
-            <a class="create_articles" href="{% url 'articles:create' %}">Create article</a>
+            <div class="create_articles">
+                <a href="{% url 'articles:create' %}">Create article</a>
+            </div>
         {% endif %}
     </main>
 {% endblock content %}
