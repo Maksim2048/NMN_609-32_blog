@@ -13,32 +13,38 @@
             <img src="{% static "img/logo.png" %}" alt="">
         </div>
         <nav class="container">
-            <ul>
-                <li><a href="{% url 'homepage' %}">Homepage</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'homepage' %}">Articles</a></li>
-                <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
-                {% if user.is_authenticated %}
-                <li>
-                    <form class="form" action="{% url 'accounts:logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">Logout</button>
-                    </form>
-                </li>
-                {% else %}
-                    <li>
-                        <a class="btn btn-outline-primary" href="{% url 'accounts:login' %}">Login</a>
+            <div class="menu__block">
+                <ul class="references">
+                    <li><a class="nav-link" href="{% url 'homepage' %}">Homepage</a></li>
+                    <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                    <li><a class="nav-link" href="{% url 'homepage' %}">Articles</a></li>
+                    <li><a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a></li>
+                    {% if user.is_authenticated %}
+                    <li id="logout_button">
+                        <form class="form" action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
                     </li>
-                    <li>
-                        <a class="btn btn-primary" href="{% url 'accounts:signup' %}">Sign up</a>
-                    </li>
-                {% endif %}
-            </ul>
+                    {% else %}
+                        <div class="buttons">
+                            <li>
+                                <a class="btn btn-outline-primary" href="{% url 'accounts:login' %}">Login</a>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary" href="{% url 'accounts:signup' %}">Sign up</a>
+                            </li>
+                        </div>
+                    {% endif %}
+                </ul>
+                <a href="#" class="menu-btn"><span></span></a>
+            </div>
         </nav>
     </header>
 
     <div class="container">
         {% block content %}{% endblock content %}
     </div>
+    <script src="{% static 'js/burger-menu.js' %}"></script>
 </body>
 </html>

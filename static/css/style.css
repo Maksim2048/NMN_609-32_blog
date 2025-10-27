@@ -37,35 +37,75 @@ header {
   height: 50px;
 }
 
-nav {
+.menu__block {
   display: flex;
   width: 100%;
+  align-items: center;
 }
-ul {
+
+/* Ссылки навигации для десктопа */
+.references {
   display: flex;
   width: 100%;
+  padding-left: 0px;
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
 }
-li a {
-  font-size: 24px;
-  color: black;
+
+.references li {
+  margin: 0;
 }
 
-li a:hover {
+.nav-link {
+  font-size: 24px;
+  color: black;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
   color: dodgerblue;
 }
-nav button {
+
+/*-----------Кнопки Login и Signup когда пользователь не авторизован-------------*/
+.buttons
+{
+  display: flex;
+  justify-content: space-between;
+  width: 27%;
+}
+
+@media screen and (max-width: 1024px){
+  .buttons{
+    width: 32%;
+  }
+}
+
+@media screen and (max-width: 840px)
+{
+  .references .btn-outline-primary{
+    padding: 15px 30px;
+  }
+  .nav-link{
+    font-size: 22px;
+  }
+}
+/*--------------Кнопки Login и Signup когда пользователь не авторизован-------------------*/
+
+/* Кнопка */
+.references button {
   padding: 15px 40px;
   background-color: #329432;
   color: white;
   border-radius: 30px;
   border: none;
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-nav button:hover {
+.references button:hover {
   background-color: #3ad43a;
 }
 
@@ -79,38 +119,236 @@ nav button:hover {
   gap: 3%;
   }
 }
-@media(max-width: 768px){
-  ul{
-    padding: 0 0 0 30px;
-  }
-  li a {
-  font-size: 20px;
-  }
-  .logo img {
-  width: 40px;
-  height: 40px;
-  }
-  nav button {
-  padding: 12px 30px;
-  font-size: 14px;
-  }
-}
-@media(max-width: 685px){
-  ul{
-    padding: 0px 0px;
-  }
-  li a {
-  font-size: 18px;
-  }
-  .logo img {
-  width: 35px;
-  height: 35px;
-  }
-}
-@media(max-width: 576px){
-  header{gap: 0;}
+
+/* Бургер-кнопка (скрыта на десктопе) */
+.menu-btn {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
+.menu-btn span,
+.menu-btn span::before,
+.menu-btn span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -1px;
+  height: 2px;
+  width: 20px;
+  background-color: #4047e2;
+  transition: transform 0.2s ease;
+}
+
+.menu-btn span::before,
+.menu-btn span::after {
+  content: "";
+  display: block;
+}
+
+.menu-btn span::before {
+  transform: translateY(-6px);
+}
+
+.menu-btn span::after {
+  transform: translateY(6px);
+}
+
+/* Активное состояние бургера */
+.btn__active span { /*среднюю линию бургера делаем невидимой (высота 0)*/
+  position: fixed;
+  top: 11%;
+  left: 94%;
+  height: 0;
+}
+
+.btn__active span::before {
+  transform: rotate(45deg);
+}
+
+.btn__active span::after {
+  transform: rotate(-45deg);
+}
+
+/* Мобильные стили */
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 15px 60px;
+    gap: 15px;
+  }
+
+  .menu__block
+  {
+    justify-content: flex-end;
+  }
+
+  /* Показываем бургер-кнопку */
+  .menu-btn {
+    display: block;
+    z-index: 1001;
+  }
+
+  /* Скрываем обычное меню */
+  .references {
+    display: none;
+    position: fixed;
+    top: 0;
+    margin-top: 0px;
+    right: -100%;
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 80px 20px 20px;
+    gap: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+  }
+
+  /* Активное состояние меню */
+  .references__active {
+    display: flex !important;
+    right: 0;
+  }
+
+  /* Затемнение фона */
+  .menu__block__active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .references li {
+    text-align: right;
+  }
+
+  .references li a {
+    font-size: 18px;
+    color: #333;
+    padding: 15px 0;
+    display: block;
+    width: 100%;
+  }
+
+  .references button {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .buttons li a{
+    color: white;
+  }
+
+  /*--------Кнопки при активном меню (бургер раскрыт)-------*/
+  .references__active .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .references__active .buttons li {
+    width: auto;
+    text-align: center;
+  }
+
+  .references__active .buttons .btn-outline-primary,
+  .references__active .buttons .btn-primary {
+    display: block;
+    width: 400px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 15px 20px;
+  }
+
+  .references__active form{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0px;
+    margin-top: 60px;
+  }
+  .references__active .form button{
+    display: block;
+    width: 400px;
+  }
+  #logout_button{
+    width: 100%;
+  }
+  /*--------Кнопки при активном меню (бургер раскрыт)------*/
+}
+
+/* Очень маленькие экраны */
+@media screen and (max-width: 640px){
+  .references__active .buttons .btn-outline-primary,
+  .references__active .buttons .btn-primary {
+    width: 350px;
+  }
+  .references__active .form button{
+    width: 350px;
+  }
+}
+@media screen and (max-width: 560px){
+  .references__active .buttons .btn-outline-primary,
+  .references__active .buttons .btn-primary {
+    width: 300px;
+  }
+  .references__active .form button{
+    width: 300px;
+  }
+  .btn__active span {
+    left: 92%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .references {
+    width: 85%;
+  }
+
+  header {
+    padding: 10px 15px;
+  }
+}
+@media screen and (max-width: 390px){
+  .references__active .buttons .btn-outline-primary,
+  .references__active .buttons .btn-primary {
+    width: 250px;
+  }
+  .references__active .form button{
+    width: 250px;
+  }
+}
+@media screen and (max-width: 350px){
+  .references__active .buttons .btn-outline-primary,
+  .references__active .buttons .btn-primary {
+    width: 200px;
+  }
+  .references__active .form button li a{
+    font-size: 14px;
+  }
+  .btn__active span {
+    left: 90%;
+  }
+  @media screen and (max-width: 280px){
+    .references__active .form button{
+      width: 200px;
+    }
+  }
+}
 /*---------------------------Конец навигации-----------------------*/
 
 /*----------------Стили для статей-------------*/
@@ -206,6 +444,25 @@ time {
   font-size: 18px;
   color: black;
 }
+
+@media screen and (max-width: 470px){
+  .article-detail img{
+      width: 350px;
+  }
+}
+@media screen and (max-width: 380px){
+  .article-detail img{
+      width: 300px;
+  }
+}
+@media screen and (max-width: 320px){
+  h1{
+    font-size: 28px;
+  }
+  .article-detail img{
+      width: 250px;
+  }
+}
 /*----------------Конец стилей для статей-------------*/
 
 /*----------------Стили для About-------------*/
@@ -286,7 +543,7 @@ time {
     padding: 12px;
   }
 
-  .btn-primary {
+  .form .btn-primary {
     padding: 14px;
   }
 }
@@ -350,8 +607,9 @@ time {
   font-size: 16px;
 }
 .btn-outline-primary:hover {
-  background-color: #5151e5;
+  background-color: #0b0bbf;
   color: white;
+  transform: translateY(-1px);
 }
 
 /*-------------------------Стили для формы Signup и Create article------------------------*/
@@ -360,7 +618,6 @@ time {
   flex-direction: column;
   max-width: 500px;
   margin: 0 auto;
-  padding: 20px;
   gap: 20px;
 }
 
